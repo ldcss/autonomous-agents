@@ -52,7 +52,7 @@ class Agent {
         ].title
       ) {
         case "vazio":
-          agentSpeed = 0.25;
+          agentSpeed = 0.20;
           break;
 
         case "grass":

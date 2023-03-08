@@ -30,10 +30,10 @@ class World {
     this.visitedToDraw = [];
 
     // this.setBFSPath();
-    // this.setUCSPath();
-    // this.setGreedyPath();
     // this.setDFSPath();
-    this.setAStarPath();
+    this.setUCSPath();
+    // this.setGreedyPath();
+    // this.setAStarPath();
   }
 
   updatePathVisitedTargetPosition(path, visited) {
@@ -52,12 +52,19 @@ class World {
   }
 
   setUCSPath() {
-    let { path, visited } = ucs(
+    let { path, visited } = dijkstra(
       this.grid,
       this.agent.getPosMatrix(),
       this.food.getPosMatrix()
     );
-    this.updatePathVisitedTargetPosition(path, visited);
+    let { path2, visited2 } = ucs(
+      this.grid,
+      this.agent.getPosMatrix(),
+      this.food.getPosMatrix()
+    );
+    console.log('path dijkstra', path);
+    console.log('path2 ucs', path2);
+    this.updatePathVisitedTargetPosition(path, visited2);
   }
 
   setGreedyPath() {
@@ -99,13 +106,13 @@ class World {
   }
 
   drawSearch() {
-    const pathColor = color(255, 255, 255);
+    const searchedColor = color(255, 255, 255);
 
     let visitedAux = this.visited.shift();
 
     this.visitedToDraw.push(visitedAux);
 
-    fill(pathColor);
+    fill(searchedColor);
 
     this.visitedToDraw.forEach((cell) => {
       const i = (cell[0] + 0.5) * GRID_SIZE;

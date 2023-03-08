@@ -12,7 +12,7 @@ function ucs(grid, start, goal) {
     col = Math.floor(col);
 
     if (row === goal[0] && col === goal[1]) {
-      return { path: convert2DArrayToVector(path), visited: setTo2DArray(visited)};
+      return { path2: convert2DArrayToVector(path), visited2: setTo2DArray(visited)};
     }
 
     for (let neighbor of getNeighbors(row, col, grid.gridMatrix)) {

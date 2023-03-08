@@ -14,7 +14,7 @@ class PriorityQueue {
       if (b.priority === undefined) {
         return -1;
       }
-      return aiority - b.priority;
+      return a.priority - b.priority;
     });
   }
 
